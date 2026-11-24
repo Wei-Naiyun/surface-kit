@@ -1,0 +1,137 @@
+/* ==========================================================================
+   Markdown 排版：跟着主题令牌走，正文用 15px / 1.7 行高，代码块单独处理
+   ========================================================================== */
+
+.sk-markdown {
+  --sk-text: var(--sk-text-primary, #2b2926);
+  --sk-text-muted: var(--sk-text-secondary, #6b6660);
+  --sk-line: rgba(0, 0, 0, 0.08);
+  --sk-code-bg: #f6f3ee;
+  --sk-accent: #c6613f;
+
+  color: var(--sk-text);
+  font-size: 15px;
+  line-height: 1.7;
+  word-break: break-word;
+}
+
+.dark .sk-markdown {
+  --sk-text: #ece8e1;
+  --sk-text-muted: #a8a199;
+  --sk-line: rgba(255, 255, 255, 0.1);
+  --sk-code-bg: #262421;
+  --sk-accent: #e08264;
+}
+
+.sk-markdown > :first-child {
+  margin-top: 0;
+}
+
+.sk-markdown > :last-child {
+  margin-bottom: 0;
+}
+
+.sk-markdown h1,
+.sk-markdown h2,
+.sk-markdown h3,
+.sk-markdown h4 {
+  margin: 1.4em 0 0.6em;
+  line-height: 1.35;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.sk-markdown h1 {
+  font-size: 1.4em;
+}
+
+.sk-markdown h2 {
+  font-size: 1.2em;
+}
+
+.sk-markdown h3 {
+  font-size: 1.05em;
+}
+
+.sk-markdown p,
+.sk-markdown ul,
+.sk-markdown ol,
+.sk-markdown blockquote,
+.sk-markdown table {
+  margin: 0.7em 0;
+}
+
+.sk-markdown ul,
+.sk-markdown ol {
+  padding-left: 1.35em;
+}
+
+.sk-markdown li + li {
+  margin-top: 0.25em;
+}
+
+.sk-markdown a {
+  color: var(--sk-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+
+.sk-markdown blockquote {
+  padding: 0.2em 0 0.2em 0.9em;
+  border-left: 2px solid var(--sk-accent);
+  color: var(--sk-text-muted);
+}
+
+.sk-markdown code {
+  padding: 0.12em 0.35em;
+  border-radius: 5px;
+  background: var(--sk-code-bg);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.88em;
+}
+
+.sk-pre {
+  margin: 0.9em 0;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: var(--sk-code-bg);
+  border: 1px solid var(--sk-line);
+  overflow-x: auto;
+}
+
+.sk-pre code {
+  padding: 0;
+  background: none;
+  font-size: 0.85em;
+  line-height: 1.6;
+}
+
+.sk-markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.93em;
+}
+
+.sk-markdown th,
+.sk-markdown td {
+  padding: 0.45em 0.6em;
+  border-bottom: 1px solid var(--sk-line);
+  text-align: left;
+}
+
+.sk-markdown th {
+  font-weight: 600;
+  color: var(--sk-text-muted);
+}
+
+.sk-markdown hr {
+  margin: 1.4em 0;
+  border: 0;
+  border-top: 1px solid var(--sk-line);
+}
+
+.sk-markdown img {
+  max-width: 100%;
+  border-radius: 10px;
+}

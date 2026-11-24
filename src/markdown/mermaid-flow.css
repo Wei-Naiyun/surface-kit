@@ -1,0 +1,139 @@
+/* ==========================================================================
+   Mermaid 流程图：柔和样式 + 「长出来」的动画
+   目标是去掉默认主题那种硬边黑框的机器感：细描边、圆角、轻阴影、曲线连线。
+   ========================================================================== */
+
+.sk-mermaid {
+  --sk-node-fill: #fdfbf7;
+  --sk-node-stroke: #d9d3c8;
+  --sk-node-text: #2b2926;
+  --sk-edge: #b6ada0;
+  --sk-accent: #c6613f;
+  --sk-cluster-fill: rgba(198, 97, 63, 0.04);
+
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+  padding: 0.75rem 0.5rem;
+  border-radius: 14px;
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(198, 97, 63, 0.06), transparent 60%),
+    var(--sk-surface-1, #fff);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  overflow-x: auto;
+}
+
+.dark .sk-mermaid {
+  --sk-node-fill: #262421;
+  --sk-node-stroke: #4a453f;
+  --sk-node-text: #ece8e1;
+  --sk-edge: #6b655d;
+  --sk-accent: #e08264;
+  --sk-cluster-fill: rgba(224, 130, 100, 0.08);
+
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.sk-mermaid svg {
+  max-width: 100%;
+  height: auto;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* 节点：圆角 + 细描边 + 轻阴影 */
+.sk-mermaid .node rect,
+.sk-mermaid .node circle,
+.sk-mermaid .node polygon,
+.sk-mermaid .node path {
+  fill: var(--sk-node-fill) !important;
+  stroke: var(--sk-node-stroke) !important;
+  stroke-width: 1.25px !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.06));
+}
+
+.sk-mermaid .node rect {
+  rx: 10px;
+  ry: 10px;
+}
+
+.sk-mermaid .nodeLabel,
+.sk-mermaid .nodeLabel p,
+.sk-mermaid .label {
+  color: var(--sk-node-text) !important;
+  fill: var(--sk-node-text) !important;
+  font-size: 13px !important;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* 强调节点（判定/起止用 class 或 shape 区分不了，这里用主色描边突出第一个） */
+.sk-mermaid .node:first-of-type rect,
+.sk-mermaid .node:first-of-type path {
+  stroke: var(--sk-accent) !important;
+  stroke-width: 1.5px !important;
+}
+
+/* 连线：细、柔、带一点主色 */
+.sk-mermaid .edgePath path,
+.sk-mermaid path.flowchart-link,
+.sk-mermaid path.edge-thickness-normal {
+  stroke: var(--sk-edge) !important;
+  stroke-width: 1.4px !important;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sk-mermaid marker path,
+.sk-mermaid .arrowheadPath,
+.sk-mermaid .marker {
+  fill: var(--sk-edge) !important;
+  stroke: var(--sk-edge) !important;
+}
+
+/* 子图/分组：淡淡的底色 + 虚线边框，别抢主线 */
+.sk-mermaid .cluster rect {
+  fill: var(--sk-cluster-fill) !important;
+  stroke: var(--sk-node-stroke) !important;
+  stroke-width: 1px !important;
+  stroke-dasharray: 4 4;
+  rx: 12px;
+  ry: 12px;
+}
+
+.sk-mermaid .cluster-label .nodeLabel {
+  font-size: 12px !important;
+  font-weight: 600;
+  color: var(--sk-accent) !important;
+}
+
+/* 边标签：去掉背景块，避免像贴纸 */
+.sk-mermaid .edgeLabel,
+.sk-mermaid .edgeLabel rect {
+  background: transparent !important;
+  fill: transparent !important;
+}
+
+.sk-mermaid .edgeLabel {
+  font-size: 11.5px !important;
+  color: var(--sk-edge) !important;
+}
+
+.sk-mermaid-error {
+  display: block;
+  white-space: pre-wrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  color: #b4462f;
+  background: rgba(198, 97, 63, 0.07);
+  border: 1px solid rgba(198, 97, 63, 0.25);
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sk-mermaid * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
